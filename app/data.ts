@@ -375,4 +375,4 @@ export const localeOptions = [
   { value: "en", label: "EN" },
   { value: "es", label: "ES" },
   { value: "de", label: "DE" },
-];
+] satisfies readonly { value: Locale; label: string }[];

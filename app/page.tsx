@@ -11,6 +11,7 @@ import {
   localeOptions,
   stack,
   workItems,
+  type Locale,
 } from "./data";
 
 const sectionVariant = {
@@ -29,7 +30,7 @@ const staggerContainer = {
 
 export default function Page() {
   const [activeId, setActiveId] = useState(workItems[0]?.id ?? "");
-  const [locale, setLocale] = useState<"en" | "es" | "de">("en");
+  const [locale, setLocale] = useState<Locale>("en");
   const t = i18n[locale];
 
   return (
@@ -77,7 +78,7 @@ export default function Page() {
                   <button
                     key={option.value}
                     type="button"
-                    onClick={() => setLocale(option.value)}
+                    onClick={() => setLocale(option.value as Locale)}
                     className={`relative z-10 rounded-full px-3 py-1 text-xs transition-colors ${
                       locale === option.value
                         ? "text-white dark:text-black"
