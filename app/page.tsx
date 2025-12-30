@@ -9,6 +9,9 @@ import {
   i18n,
   languages,
   localeOptions,
+  methods,
+  certificates,
+  skills,
   stack,
   workItems,
   type Locale,
@@ -54,38 +57,26 @@ export default function Page() {
             ))}
             <div className="ml-auto flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-zinc-500">
               <span>{t.labels.languageToggle}</span>
-              <div className="relative flex rounded-full border border-zinc-200/70 bg-white/80 p-1 shadow-sm dark:border-white/10 dark:bg-white/5">
-                <AnimatePresence initial={false}>
-                  <motion.span
-                    key={locale}
-                    className="absolute inset-y-1 rounded-full bg-black dark:bg-white"
-                    initial={{ opacity: 0, x: 12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -12 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    style={{
-                      width: "33.333%",
-                      left:
-                        locale === "en"
-                          ? "0%"
-                          : locale === "es"
-                            ? "33.333%"
-                            : "66.666%",
-                    }}
-                  />
-                </AnimatePresence>
+              <div className="relative flex overflow-hidden rounded-full border border-zinc-200/70 bg-white/80 p-1 shadow-sm dark:border-white/10 dark:bg-white/5">
                 {localeOptions.map((option) => (
                   <button
                     key={option.value}
                     type="button"
                     onClick={() => setLocale(option.value as Locale)}
-                    className={`relative z-10 rounded-full px-3 py-1 text-xs transition-colors ${
+                    className={`relative z-10 flex-1 rounded-full px-3 py-1 text-xs transition-colors ${
                       locale === option.value
                         ? "text-white dark:text-black"
                         : "text-zinc-500 hover:text-black dark:hover:text-white"
                     }`}
                   >
-                    {option.label}
+                    {locale === option.value && (
+                      <motion.span
+                        layoutId="locale-pill"
+                        className="absolute inset-0 rounded-full bg-black dark:bg-white"
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                      />
+                    )}
+                    <span className="relative z-10">{option.label}</span>
                   </button>
                 ))}
               </div>
@@ -236,7 +227,7 @@ export default function Page() {
                           {item.company}
                         </div>
                         <div className="text-sm text-zinc-500">
-                          {item.role}
+                          {item.role[locale]}
                         </div>
                       </div>
                     </div>
@@ -333,6 +324,113 @@ export default function Page() {
         </motion.section>
 
         <motion.section
+          id="skills"
+          className="mt-20 grid gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div
+            className="flex items-end justify-between gap-6"
+            variants={sectionVariant}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <h2 className="text-2xl font-semibold">{t.sections.skills}</h2>
+            <span className="text-xs uppercase tracking-[0.2em] text-zinc-500">
+              {t.sections.skillsCaption}
+            </span>
+          </motion.div>
+          <motion.div
+            className="grid gap-3 sm:grid-cols-2"
+            variants={staggerContainer}
+          >
+            {skills[locale].map((item) => (
+              <motion.div
+                key={item}
+                className="rounded-xl border border-zinc-200/60 bg-white/80 px-4 py-3 text-sm text-zinc-500 shadow-sm dark:border-white/10 dark:bg-white/5"
+                variants={sectionVariant}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                {item}
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
+
+        <motion.section
+          id="methods"
+          className="mt-20 grid gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div
+            className="flex items-end justify-between gap-6"
+            variants={sectionVariant}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <h2 className="text-2xl font-semibold">{t.sections.methods}</h2>
+            <span className="text-xs uppercase tracking-[0.2em] text-zinc-500">
+              {t.sections.methodsCaption}
+            </span>
+          </motion.div>
+          <motion.div
+            className="flex flex-wrap gap-3"
+            variants={staggerContainer}
+          >
+            {methods.map((item) => (
+              <motion.div
+                key={item}
+                className="rounded-full border border-zinc-200/70 bg-white/80 px-4 py-2 text-sm text-black shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-white"
+                variants={sectionVariant}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                {item}
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
+
+        <motion.section
+          id="certificates"
+          className="mt-20 grid gap-6"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div
+            className="flex items-end justify-between gap-6"
+            variants={sectionVariant}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <h2 className="text-2xl font-semibold">
+              {t.sections.certificates}
+            </h2>
+            <span className="text-xs uppercase tracking-[0.2em] text-zinc-500">
+              {t.sections.certificatesCaption}
+            </span>
+          </motion.div>
+          <motion.div
+            className="grid gap-3 sm:grid-cols-2"
+            variants={staggerContainer}
+          >
+            {certificates.map((item) => (
+              <motion.div
+                key={item}
+                className="rounded-xl border border-zinc-200/60 bg-white/80 px-4 py-3 text-sm text-zinc-500 shadow-sm dark:border-white/10 dark:bg-white/5"
+                variants={sectionVariant}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                {item}
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.section>
+
+        <motion.section
           id="languages"
           className="mt-20 grid gap-6"
           variants={staggerContainer}
@@ -392,6 +490,20 @@ export default function Page() {
               href={`mailto:${contact.email}`}
             >
               {contact.email}
+            </a>
+            <a
+              className="text-black transition-colors hover:text-zinc-500 dark:text-white"
+              href={`tel:${contact.number.replace(/\\s+/g, "")}`}
+            >
+              {contact.number}
+            </a>
+            <a
+              className="text-black transition-colors hover:text-zinc-500 dark:text-white"
+              href={contact.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+            >
+              WhatsApp: {contact.number}
             </a>
           </motion.div>
         </motion.section>

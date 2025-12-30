@@ -11,7 +11,7 @@ export type WorkItem = {
   id: string;
   period: string;
   company: string;
-  role: string;
+  role: LocalizedString;
   summary: LocalizedString;
   visual: {
     label: string;
@@ -26,15 +26,18 @@ export const i18n = {
   en: {
     intro: {
       greeting:
-        "¡Hola!  I'm José, a Software Developer & Data Engineer based in Leipzig.",
+        "¡Hola! I'm Jose, a Software Developer & Data Engineer based in Leipzig.",
       mission:
-        "I specialize in bridging the gap between complex data ecosystems and user-centric software. My mission is to contribute to society by automating the tedious and clarifying the complex.",
+        "With 4+ years of experience across web development, automation, and data analytics, I build internal systems that clarify complexity and reduce manual work. I'm available to start immediately in Leipzig.",
     },
     nav: [
       { label: "Intro", href: "#intro" },
       { label: "About", href: "#about" },
       { label: "Work", href: "#work" },
       { label: "Stack", href: "#stack" },
+      { label: "Skills", href: "#skills" },
+      { label: "Methods", href: "#methods" },
+      { label: "Certificates", href: "#certificates" },
       { label: "Languages", href: "#languages" },
       { label: "Contact", href: "#contact" },
     ],
@@ -43,6 +46,12 @@ export const i18n = {
       workCaption: "Selected Experience",
       stack: "Technical Stack",
       stackCaption: "Core Tools",
+      skills: "Skills",
+      skillsCaption: "Capabilities",
+      methods: "Methodologies",
+      methodsCaption: "Workflows",
+      certificates: "Certificates",
+      certificatesCaption: "Credentials",
       languages: "Languages",
       languagesCaption: "Communication",
       contact: "Contact",
@@ -57,44 +66,53 @@ export const i18n = {
       title: "About",
       caption: "Presence",
       body:
-        "I design and build data-driven platforms that feel calm, clear, and reliable. I enjoy translating messy systems into elegant workflows and collaborating with teams that value impact over noise.",
+        "Analytical and hands-on engineer focused on process optimization, clean architecture, and measurable outcomes. I adapt quickly to new technologies, collaborate cross-functionally, and prioritize maintainability from day one.",
     },
   },
   es: {
     intro: {
       greeting:
-        "¡Hola!  Soy José, Desarrollador de Software e Ingeniero de Datos con base en Leipzig.",
+        "¡Hola! Soy José, Desarrollador de Software e Ingeniero de Datos con base en Leipzig.",
       mission:
-        "Me especializo en tender puentes entre ecosistemas de datos complejos y software centrado en las personas. Mi mision es aportar a la sociedad automatizando lo tedioso y aclarando lo complejo.",
+        "Con más de 4 años de experiencia en desarrollo web, automatización y analítica de datos, creo sistemas internos que reducen el trabajo manual y aclaran lo complejo. Disponible para incorporación inmediata en Leipzig.",
     },
     nav: [
       { label: "Intro", href: "#intro" },
       { label: "Sobre mi", href: "#about" },
       { label: "Trabajo", href: "#work" },
       { label: "Stack", href: "#stack" },
+      { label: "Skills", href: "#skills" },
+      { label: "Metodos", href: "#methods" },
+      { label: "Certificados", href: "#certificates" },
       { label: "Idiomas", href: "#languages" },
       { label: "Contacto", href: "#contact" },
     ],
     sections: {
       work: "Experiencia",
       workCaption: "Trayectoria seleccionada",
-      stack: "Stack Tecnico",
+      stack: "Stack Técnico",
       stackCaption: "Herramientas clave",
+      skills: "Competencias",
+      skillsCaption: "Capacidades",
+      methods: "Metodologías",
+      methodsCaption: "Flujos",
+      certificates: "Certificados",
+      certificatesCaption: "Credenciales",
       languages: "Idiomas",
-      languagesCaption: "Comunicacion",
+      languagesCaption: "Comunicación",
       contact: "Contacto",
     },
     labels: {
-      expand: "Ver mas",
+      expand: "Ver más",
       collapse: "Cerrar",
       languageToggle: "Idioma",
-      location: "Ubicacion",
+      location: "Ubicación",
     },
     about: {
-      title: "Sobre mi",
-      caption: "Presentacion",
+      title: "Sobre mí",
+      caption: "Presentación",
       body:
-        "Diseno y construyo plataformas basadas en datos con una experiencia clara y confiable. Me gusta traducir sistemas complejos en flujos elegantes y colaborar con equipos que buscan impacto real.",
+        "Perfil analítico y práctico, enfocado en optimización de procesos, arquitectura limpia y resultados medibles. Aprendo rápido, colaboro de forma transversal y priorizo la mantenibilidad desde el inicio.",
     },
   },
   de: {
@@ -102,13 +120,16 @@ export const i18n = {
       greeting:
         "Hallo! Ich bin Jose, Softwareentwickler und Data Engineer mit Sitz in Leipzig.",
       mission:
-        "Ich verbinde komplexe Daten-Okosysteme mit nutzerzentrierter Software. Meine Mission ist es, das Langwierige zu automatisieren und das Komplexe zu klaren.",
+        "Mit uber 4 Jahren Erfahrung in Webentwicklung, Automatisierung und Datenanalyse entwickle ich interne Systeme, die Komplexitat reduzieren und manuelle Arbeit eliminieren. Sofort verfugbar in Leipzig.",
     },
     nav: [
       { label: "Intro", href: "#intro" },
       { label: "Uber mich", href: "#about" },
       { label: "Arbeit", href: "#work" },
       { label: "Stack", href: "#stack" },
+      { label: "Skills", href: "#skills" },
+      { label: "Methoden", href: "#methods" },
+      { label: "Zertifikate", href: "#certificates" },
       { label: "Sprachen", href: "#languages" },
       { label: "Kontakt", href: "#contact" },
     ],
@@ -117,6 +138,12 @@ export const i18n = {
       workCaption: "Ausgewahlte Projekte",
       stack: "Technischer Stack",
       stackCaption: "Kernwerkzeuge",
+      skills: "Kompetenzen",
+      skillsCaption: "Fahigkeiten",
+      methods: "Methoden",
+      methodsCaption: "Ablaufe",
+      certificates: "Zertifikate",
+      certificatesCaption: "Nachweise",
       languages: "Sprachen",
       languagesCaption: "Kommunikation",
       contact: "Kontakt",
@@ -131,21 +158,44 @@ export const i18n = {
       title: "Uber mich",
       caption: "Prasenz",
       body:
-        "Ich entwickle datengetriebene Plattformen, die ruhig, klar und zuverlassig wirken. Ich ubersetze komplexe Systeme in elegante Workflows und arbeite gerne mit Teams, die Wirkung uber Larm stellen.",
+        "Analytischer und praktischer Engineer mit Fokus auf Prozessoptimierung, saubere Architektur und messbare Resultate. Ich passe mich schnell an neue Technologien an, arbeite gern interdisziplinar und denke von Anfang an an Wartbarkeit.",
     },
   },
 };
 
 export const languages = [
   { name: "Spanish", level: "Native" },
-  { name: "English", level: "Advanced / C1" },
+  { name: "English", level: "Advanced/C1" },
   { name: "German", level: "B1" },
 ];
 
 export const stack = {
-  Programming: ["Python", "TS/JS", "SQL"],
-  Frontend: ["Next.js", "React"],
-  "Backend/Data": ["Node.js", "PostgreSQL", "PowerBI"],
+  Programming: [
+    "JavaScript",
+    "TypeScript",
+    "Python",
+    "SQL",
+    "C#",
+    "Java",
+  ],
+  Frontend: ["Next.js", "React", "Angular", "Vue", "Storybook"],
+  "Backend/Data": [
+    "Node.js (Express/Koa)",
+    "Django",
+    "FastAPI",
+    "Pandas",
+    "NumPy",
+    "PostgreSQL",
+    "MySQL",
+    "SQL Server",
+    "PowerBI",
+    "Qlik Sense",
+    "REST APIs",
+    "Microservices",
+    "Docker",
+    "GitHub Actions",
+    "Kubernetes (basic)",
+  ],
 };
 
 export const workItems: WorkItem[] = [
@@ -153,11 +203,15 @@ export const workItems: WorkItem[] = [
     id: "duoc",
     period: "2025",
     company: "DUOC UC",
-    role: "Dozent",
+    role: {
+      en: "Lecturer",
+      es: "Docente",
+      de: "Dozent",
+    },
     summary: {
-      en: "Academic leadership in Advanced Databases and BPM, teaching the next generation how to design scalable logic.",
-      es: "Liderazgo academico en Bases de Datos Avanzadas y BPM, formando a la nueva generacion en diseno de logica escalable.",
-      de: "Akademische Leitung in Advanced Databases und BPM, mit Fokus auf skalierbare Logik und Systementwurf.",
+      en: "Practice-oriented teaching in software development and databases with a focus on logic, structure, and solution design.",
+      es: "Docencia práctica en desarrollo de software y bases de datos, con foco en lógica, estructura y diseño de soluciones.",
+      de: "Praxisorientierter Unterricht in Softwareentwicklung und Datenbanken mit Fokus auf Logik, Struktur und Losungsdesign.",
     },
     visual: {
       label: "Academic Architecture",
@@ -168,26 +222,26 @@ export const workItems: WorkItem[] = [
     projects: [
       {
         title: {
-          en: "Advanced Databases",
-          es: "Bases de Datos Avanzadas",
-          de: "Advanced Databases",
+          en: "Software Development",
+          es: "Desarrollo de Software",
+          de: "Softwareentwicklung",
         },
         impact: {
-          en: "Designed curriculum emphasizing scalable schemas, query optimization, and real-world constraints.",
-          es: "Diseno de planes de estudio enfocados en esquemas escalables, optimizacion de consultas y restricciones reales.",
-          de: "Curriculum mit Fokus auf skalierbare Schemata, Query-Optimierung und reale Rahmenbedingungen.",
+          en: "Mentored students through applied problem-solving and clean system structure.",
+          es: "Acompañamiento en resolución de problemas y estructura de sistemas limpios.",
+          de: "Begleitung bei angewandter Problemlosung und sauberem Systemaufbau.",
         },
       },
       {
         title: {
-          en: "BPM Systems",
-          es: "Sistemas BPM",
-          de: "BPM-Systeme",
+          en: "Databases & BPM",
+          es: "Bases de Datos y BPM",
+          de: "Datenbanken & BPM",
         },
         impact: {
-          en: "Guided process modeling and automation for resilient enterprise workflows.",
-          es: "Modelado y automatizacion de procesos para flujos empresariales resilientes.",
-          de: "Prozessmodellierung und Automatisierung fur robuste Unternehmensablaufe.",
+          en: "Applied agile methods in student projects to reinforce collaboration and delivery.",
+          es: "Uso de métodos ágiles en proyectos para reforzar colaboración y entrega.",
+          de: "Einsatz agiler Methoden in Projekten zur Starkung von Zusammenarbeit und Lieferung.",
         },
       },
     ],
@@ -196,11 +250,15 @@ export const workItems: WorkItem[] = [
     id: "higueras",
     period: "2024-2025",
     company: "Hospital Las Higueras",
-    role: "Digital Health",
+    role: {
+      en: "Software Developer",
+      es: "Desarrollador de Software",
+      de: "Softwareentwickler",
+    },
     summary: {
-      en: "Digital Transformation Suite for mission-critical hospital workflows.",
-      es: "Suite de transformacion digital para flujos clinicos criticos.",
-      de: "Digitale Transformationssuite fur unternehmenskritische Klinikprozesse.",
+      en: "Backend development and automation for internal clinical services with Python and SQL.",
+      es: "Desarrollo backend y automatización de servicios internos con Python y SQL.",
+      de: "Backend-Entwicklung und Automatisierung interner klinischer Services mit Python und SQL.",
     },
     visual: {
       label: "Digital Health",
@@ -211,26 +269,26 @@ export const workItems: WorkItem[] = [
     projects: [
       {
         title: {
-          en: "Patient Scheduling",
-          es: "Agendamiento de Pacientes",
-          de: "Patientenplanung",
+          en: "API Integrations",
+          es: "Integracion de APIs",
+          de: "API-Integrationen",
         },
         impact: {
-          en: "Migrated paper-based operations to high-availability digital scheduling and agenda systems.",
-          es: "Migracion de operaciones en papel a sistemas digitales de agenda y alta disponibilidad.",
-          de: "Migration papierbasierter Ablaufe zu hochverfugbaren digitalen Planungs- und Agenda-Systemen.",
+          en: "Connected internal systems and built services to streamline clinical operations.",
+          es: "Conexión de sistemas internos y servicios para optimizar la operación clínica.",
+          de: "Verknupfung interner Systeme und Services zur Optimierung klinischer Ablaufe.",
         },
       },
       {
         title: {
-          en: "Pharmacy & Medicine Tracking",
-          es: "Trazabilidad de Farmacia",
-          de: "Pharmazie- und Medikamenten-Tracking",
+          en: "Operational Dashboards",
+          es: "Dashboards Operacionales",
+          de: "Operative Dashboards",
         },
         impact: {
-          en: "Delivered reliable tracking pipelines to safeguard medical operability.",
-          es: "Pipelines confiables para asegurar la operatividad y control de medicamentos.",
-          de: "Zuverlassige Tracking-Pipelines zur Sicherung der medizinischen Betriebsfahigkeit.",
+          en: "Delivered dashboards for scheduling and operational visibility.",
+          es: "Dashboards para agenda y visibilidad operativa.",
+          de: "Dashboards fur Terminplanung und operative Transparenz.",
         },
       },
     ],
@@ -239,11 +297,15 @@ export const workItems: WorkItem[] = [
     id: "fg",
     period: "2023",
     company: "Empresas FG",
-    role: "Automation Lead",
+    role: {
+      en: "Analyst & Software Developer",
+      es: "Analista y Desarrollador",
+      de: "Analyst & Softwareentwickler",
+    },
     summary: {
-      en: "Enterprise Resource Optimization for core business cycles.",
-      es: "Optimizacion de recursos empresariales para ciclos clave del negocio.",
-      de: "Optimierung von Unternehmensressourcen fur zentrale Geschaftsprozesse.",
+      en: "Process automation across logistics, construction, and real estate.",
+      es: "Automatización de procesos en logística, construcción e inmobiliaria.",
+      de: "Prozessautomatisierung in Logistik, Bau und Immobilien.",
     },
     visual: {
       label: "Industrial Automation",
@@ -254,26 +316,26 @@ export const workItems: WorkItem[] = [
     projects: [
       {
         title: {
-          en: "Billing & Error Detection",
-          es: "Facturacion y Deteccion de Errores",
-          de: "Abrechnung und Fehlererkennung",
+          en: "Automation Tooling",
+          es: "Herramientas de Automatizacion",
+          de: "Automatisierungs-Tooling",
         },
         impact: {
-          en: "Automated billing flows and anomaly detection to reduce manual overhead.",
-          es: "Automatizacion de facturacion y deteccion de anomalias para reducir trabajo manual.",
-          de: "Automatisierte Abrechnung und Anomalieerkennung zur Reduktion manueller Aufwande.",
+          en: "Built solutions with TypeScript, Python, and SQL to reduce manual work.",
+          es: "Soluciones con TypeScript, Python y SQL para reducir tareas manuales.",
+          de: "Losungen mit TypeScript, Python und SQL zur Reduktion manueller Aufgaben.",
         },
       },
       {
         title: {
-          en: "Accounting & HR Reporting",
-          es: "Reporteria Contable y RRHH",
-          de: "Accounting- und HR-Reporting",
+          en: "Reusable Modules",
+          es: "Modulos Reutilizables",
+          de: "Wiederverwendbare Module",
         },
         impact: {
-          en: "Streamlined reporting pipelines for faster executive decision-making.",
-          es: "Pipelines de reportes optimizados para decisiones ejecutivas mas rapidas.",
-          de: "Optimierte Reporting-Pipelines fur schnellere Entscheidungen im Management.",
+          en: "Integrated APIs and shipped reusable components for multiple business areas.",
+          es: "Integración de APIs y componentes reutilizables para distintas áreas.",
+          de: "API-Integration und wiederverwendbare Module fur verschiedene Bereiche.",
         },
       },
     ],
@@ -282,41 +344,45 @@ export const workItems: WorkItem[] = [
     id: "biwiser",
     period: "2021-2022",
     company: "Biwiser",
-    role: "Data-Driven Retail",
+    role: {
+      en: "Full-Stack Developer",
+      es: "Desarrollador Full-Stack",
+      de: "Full-Stack-Entwickler",
+    },
     summary: {
-      en: "Inventory Intelligence Systems for Walmart & Copec.",
-      es: "Sistemas de inteligencia de inventario para Walmart y Copec.",
-      de: "Inventar-Intelligence-Systeme fur Walmart und Copec.",
+      en: "Full-stack delivery for data-intensive retail platforms.",
+      es: "Entrega full-stack para plataformas retail orientadas a datos.",
+      de: "Full-Stack-Delivery fur datenintensive Retail-Plattformen.",
     },
     visual: {
       label: "Retail Intelligence",
       initials: "BI",
       accent: "#0F4C81",
-      logo: "/biwiser.png",
+      logo: "/gerentecomercial.png",
     },
     projects: [
       {
         title: {
-          en: "Inventory Data-Warehousing",
-          es: "Data-Warehousing de Inventario",
-          de: "Inventory Data-Warehousing",
+          en: "Modern Web Systems",
+          es: "Sistemas Web Modernos",
+          de: "Moderne Websysteme",
         },
         impact: {
-          en: "Full-cycle design-to-production of data pipelines and BI dashboards.",
-          es: "Desarrollo completo de pipelines de datos y dashboards de BI.",
-          de: "End-to-End-Entwicklung von Datenpipelines und BI-Dashboards.",
+          en: "Built dashboards and web systems for clients like Walmart, Copec, and Glam&CO.",
+          es: "Dashboards y sistemas web para clientes como Walmart, Copec y Glam&CO.",
+          de: "Dashboards und Websysteme fur Kunden wie Walmart, Copec und Glam&CO.",
         },
       },
       {
         title: {
-          en: "Executive Analytics",
-          es: "Analitica Ejecutiva",
-          de: "Executive Analytics",
+          en: "APIs & Microservices",
+          es: "APIs y Microservicios",
+          de: "APIs & Microservices",
         },
         impact: {
-          en: "Structured messy datasets into actionable insights for leadership teams.",
-          es: "Estructuracion de datos desordenados en insights accionables para la direccion.",
-          de: "Strukturierung unordentlicher Daten zu umsetzbaren Insights fur Leadership-Teams.",
+          en: "Implemented REST APIs, authentication, and internal microservices with quality and testing in mind.",
+          es: "Implementación de APIs REST, autenticación y microservicios con foco en calidad y testing.",
+          de: "Implementierung von REST-APIs, Authentifizierung und Microservices mit Fokus auf Qualitat und Testing.",
         },
       },
     ],
@@ -325,11 +391,15 @@ export const workItems: WorkItem[] = [
     id: "arauco",
     period: "2021",
     company: "Forestal Arauco",
-    role: "Data Engineering",
+    role: {
+      en: "Data Engineer",
+      es: "Ingeniero de Datos",
+      de: "Data Engineer",
+    },
     summary: {
-      en: "Tactical Planning Models for strategic forestry data.",
-      es: "Modelos tacticos de planificacion para datos forestales estrategicos.",
-      de: "Taktische Planungsmodelle fur strategische Forstdaten.",
+      en: "Standardized large strategic datasets for planning and predictive models.",
+      es: "Estandarización de grandes datasets estratégicos para planificación y modelos predictivos.",
+      de: "Standardisierung grosser strategischer Daten fur Planung und Prognosemodelle.",
     },
     visual: {
       label: "Strategic Planning",
@@ -340,26 +410,26 @@ export const workItems: WorkItem[] = [
     projects: [
       {
         title: {
-          en: "Strategic Databases",
-          es: "Bases de Datos Estrategicas",
-          de: "Strategische Datenbanken",
+          en: "Data Standardization",
+          es: "Estandarizacion de Datos",
+          de: "Datenstandardisierung",
         },
         impact: {
-          en: "Standardized massive datasets for predictive modeling and asset calculation.",
-          es: "Estandarizacion de grandes datasets para modelado predictivo y calculo de activos.",
-          de: "Standardisierung grosser Datenmengen fur Predictive Modeling und Asset-Berechnung.",
+          en: "Prepared databases for strategic planning and asset calculations.",
+          es: "Preparación de bases de datos para planificación estratégica y cálculo de activos.",
+          de: "Aufbereitung von Datenbanken fur strategische Planung und Asset-Berechnung.",
         },
       },
       {
         title: {
-          en: "Operational Forecasting",
-          es: "Pronostico Operacional",
-          de: "Operatives Forecasting",
+          en: "BI Dashboards",
+          es: "Dashboards BI",
+          de: "BI-Dashboards",
         },
         impact: {
-          en: "Enabled faster scenario planning with reliable, normalized data sources.",
-          es: "Planeacion de escenarios mas rapida con fuentes de datos confiables y normalizadas.",
-          de: "Schnellere Szenarioplanung durch verlassliche, normalisierte Datenquellen.",
+          en: "Built analytical models and dashboards in Qlik Sense and PowerBI to support leadership decisions.",
+          es: "Modelos analíticos y dashboards en Qlik Sense y PowerBI para decisiones gerenciales.",
+          de: "Analytische Modelle und Dashboards in Qlik Sense und PowerBI fur Managemententscheidungen.",
         },
       },
     ],
@@ -367,8 +437,10 @@ export const workItems: WorkItem[] = [
 ];
 
 export const contact = {
-  email: "jose.valdes@portfolio.dev",
+  email: "josevaldescarrasco@gmail.com",
   location: "Leipzig, Germany",
+  number: "+49 170 90413",
+  whatsapp: "https://wa.me/4917090413",
 };
 
 export const localeOptions = [
@@ -376,3 +448,43 @@ export const localeOptions = [
   { value: "es", label: "ES" },
   { value: "de", label: "DE" },
 ] satisfies readonly { value: Locale; label: string }[];
+
+export const skills = {
+  en: [
+    "Analytical thinking & problem solving",
+    "Process optimization & automation",
+    "Agile methods (Scrum, Kanban)",
+    "Fast learning & adaptability",
+    "Self-management & prioritization",
+    "Cross-functional collaboration",
+  ],
+  es: [
+    "Pensamiento analítico y resolución de problemas",
+    "Optimización y automatización de procesos",
+    "Metodologías ágiles (Scrum, Kanban)",
+    "Aprendizaje rápido y adaptabilidad",
+    "Autogestión y priorización",
+    "Colaboración interdisciplinaria",
+  ],
+  de: [
+    "Analytisches Denken und Problemlosung",
+    "Prozessoptimierung und Automatisierung",
+    "Agile Methoden (Scrum, Kanban)",
+    "Schnelle Auffassungsgabe und Anpassungsfahigkeit",
+    "Selbstorganisation und Priorisierung",
+    "Interdisziplinare Zusammenarbeit",
+  ],
+};
+
+export const methods = ["Scrum", "Kanban", "Lean"];
+
+export const certificates = [
+  "Python Certification",
+  "CISCO Cybersecurity",
+  "AWS Designing Event-Driven",
+  "Microsoft Git & GitHub",
+  "AWS Technical Essentials",
+  "AWS Generative AI",
+  "Microsoft Copilot for Companies",
+  "CISCO Data Science",
+];
