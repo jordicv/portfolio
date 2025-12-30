@@ -439,8 +439,8 @@ export const workItems: WorkItem[] = [
 export const contact = {
   email: "josevaldescarrasco@gmail.com",
   location: "Leipzig, Germany",
-  number: "+49 170 90413",
-  whatsapp: "https://wa.me/4917090413",
+  number: "+49 170 9020413",
+  whatsapp: "https://wa.me/491709020413",
 };
 
 export const localeOptions = [
