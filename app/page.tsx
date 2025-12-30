@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   contact,
@@ -35,6 +35,23 @@ export default function Page() {
   const [activeId, setActiveId] = useState(workItems[0]?.id ?? "");
   const [locale, setLocale] = useState<Locale>("en");
   const t = i18n[locale];
+  const [theme, setTheme] = useState<"system" | "light" | "dark">("system");
+  const [resolvedDark, setResolvedDark] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const applyTheme = () => {
+      const isDark = theme === "dark" || (theme === "system" && media.matches);
+      root.classList.toggle("dark", isDark);
+      setResolvedDark(isDark);
+    };
+
+    applyTheme();
+    const handleChange = () => applyTheme();
+    media.addEventListener("change", handleChange);
+    return () => media.removeEventListener("change", handleChange);
+  }, [theme]);
 
   return (
     <main className="relative min-h-screen scroll-smooth bg-white text-black dark:bg-black dark:text-white font-[system-ui] tracking-tighter">
@@ -55,7 +72,45 @@ export default function Page() {
                 {item.label}
               </a>
             ))}
-            <div className="ml-auto flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-zinc-500">
+            <div className="ml-auto flex items-center gap-4 text-xs uppercase tracking-[0.2em] text-zinc-500">
+              <button
+                type="button"
+                onClick={() =>
+                  setTheme((current) => {
+                    if (current === "system") {
+                      return resolvedDark ? "light" : "dark";
+                    }
+                    return current === "dark" ? "light" : "dark";
+                  })
+                }
+                className="grid h-9 w-9 place-items-center rounded-full border border-zinc-200/70 text-zinc-500 transition-colors hover:text-black dark:border-white/10 dark:hover:text-white"
+                aria-label="Toggle theme"
+              >
+                {resolvedDark ? (
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <path d="M21 12.8A9 9 0 0 1 11.2 3a7.2 7.2 0 1 0 9.8 9.8Z" />
+                  </svg>
+                ) : (
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-4 w-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  >
+                    <circle cx="12" cy="12" r="4.5" />
+                    <path d="M12 2.5v2.5M12 19v2.5M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2.5 12h2.5M19 12h2.5M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" />
+                  </svg>
+                )}
+              </button>
               <span>{t.labels.languageToggle}</span>
               <div className="relative flex overflow-hidden rounded-full border border-zinc-200/70 bg-white/80 p-1 shadow-sm dark:border-white/10 dark:bg-white/5">
                 {localeOptions.map((option) => (
