@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "José Valdés | Portfolio",
   description:
     "Software Developer & Data Engineer crafting digital systems and data-driven experiences.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
