@@ -1,0 +1,5 @@
+# Reglas de Desarrollo / Development Rules
+
+- **Directorio de Referencia (Read-Only)**: El directorio `/Users/teddy/Documents/Proyectos/lau-portfolio-main` es de uso exclusivo para lectura y referencia.
+- **NO MODIFICAR**: Bajo ninguna circunstancia se debe crear, editar, renombrar o eliminar ningún archivo dentro del directorio `/Users/teddy/Documents/Proyectos/lau-portfolio-main`.
+- **Ámbito de Modificaciones**: Todos los cambios de código, correcciones de errores o nuevas implementaciones deben realizarse únicamente dentro del directorio del portafolio actual: `/Users/teddy/Documents/Proyectos/IA/Portafolio`.

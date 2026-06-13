@@ -5,3 +5,85 @@
 body {
   @apply bg-white text-black antialiased dark:bg-black dark:text-white;
 }
+
+/* Apple-style Squircle (Bézier curves) */
+.squircle {
+  --radius: 16px;
+  border-radius: var(--radius);
+  -webkit-mask-box-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 25.6C0 16.6392 0 12.1587 1.7439 8.73615C3.27787 5.72556 5.72556 3.27787 8.73615 1.7439C12.1587 0 16.6392 0 25.6 0H74.4C83.3608 0 87.8413 0 91.2638 1.7439C94.2744 3.27787 96.7221 5.72556 98.2561 8.73615C100 12.1587 100 16.6392 100 25.6V74.4C100 83.3608 100 87.8413 98.2561 91.2638C96.7221 94.2744 94.2744 96.7221 91.2638 98.2561C87.8413 100 83.3608 100 74.4 100H25.6C16.6392 100 12.1587 100 8.73615 98.2561C5.72556 96.7221 3.27787 94.2744 1.7439 91.2638C0 87.8413 0 83.3608 0 74.4V25.6Z" fill="black"/></svg>') 16 / var(--radius) / 0px;
+}
+
+.squircle-inner {
+  --radius: 12px;
+  border-radius: var(--radius);
+  -webkit-mask-box-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 25.6C0 16.6392 0 12.1587 1.7439 8.73615C3.27787 5.72556 5.72556 3.27787 8.73615 1.7439C12.1587 0 16.6392 0 25.6 0H74.4C83.3608 0 87.8413 0 91.2638 1.7439C94.2744 3.27787 96.7221 5.72556 98.2561 8.73615C100 12.1587 100 16.6392 100 25.6V74.4C100 83.3608 100 87.8413 98.2561 91.2638C96.7221 94.2744 94.2744 96.7221 91.2638 98.2561C87.8413 100 83.3608 100 74.4 100H25.6C16.6392 100 12.1587 100 8.73615 98.2561C5.72556 96.7221 3.27787 94.2744 1.7439 91.2638C0 87.8413 0 83.3608 0 74.4V25.6Z" fill="black"/></svg>') 16 / var(--radius) / 0px;
+}
+
+/* Micro-interactions: Active scale down */
+.active-press {
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.2s ease, opacity 0.2s ease;
+  will-change: transform;
+}
+
+.active-press:active {
+  transform: scale(0.97) translateY(1px);
+}
+
+.active-press-sm {
+  transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.active-press-sm:active {
+  transform: scale(0.95);
+}
+
+/* Modern scroll margins for sticky header offset */
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Smooth theme transitions for background, text, border, and shadows */
+html, body, main, header, section, article, div, p, span, h1, h2, h3, a, button, input, textarea {
+  transition: background-color 0.4s ease-in-out, border-color 0.4s ease-in-out, color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, fill 0.4s ease-in-out;
+}
+
+/* Glassmorphic contact form styles */
+.contact-input {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background-color: rgba(244, 244, 245, 0.5);
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  color: black;
+  outline: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.dark .contact-input {
+  border-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: white;
+}
+
+.contact-input:focus {
+  border-color: black;
+  background-color: white;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.dark .contact-input:focus {
+  border-color: white;
+  background-color: black;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.contact-input::placeholder {
+  color: #a1a1aa;
+}
+
+.dark .contact-input::placeholder {
+  color: #52525b;
+}
+
